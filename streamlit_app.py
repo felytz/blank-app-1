@@ -47,7 +47,7 @@ mpio_merged = mpio_gdf.merge(mpio_year, on='cvegeo', how='inner')
 # Add a toggle to select between viewing states, municipalities, or neither
 vista_seleccionada = st.radio(
     "Selecciona la vista",
-    ["Vista de todos los estados", "Vista de todos los municipios","Vista individual de estado/municipio"],
+    ["Vista individual de estado/municipio","Vista de todos los estados", "Vista de todos los municipios"],
     index=0  # Default selection
 )
 
@@ -107,7 +107,7 @@ else:
                 'weight': 1,
                 'fillOpacity': 0.5
             },
-            tooltip=folium.GeoJsonTooltip(fields=['nom_geo'], aliases=['Municipio'])
+            tooltip=folium.GeoJsonTooltip(fields=['Año','Estado','nom_geo', 'GINI','Ingreso promedio total'], aliases=['Año','Estado','Municipio', 'Índice Gini','Ingreso promedio'])
         ).add_to(m)
         st.write(f"Mostrando la vista por municipios del estado: {estado_seleccionado}")
     else:
@@ -121,7 +121,7 @@ else:
                 'weight': 1,
                 'fillOpacity': 0.5
             },
-            tooltip=folium.GeoJsonTooltip(fields=['nom_geo', 'GINI'], aliases=['Estado', 'Índice Gini'])
+            tooltip=folium.GeoJsonTooltip(fields=['Año','nom_geo', 'GINI','Ingreso promedio total'], aliases=['Año','Estado', 'Índice Gini','Ingreso promedio'])
         ).add_to(m)
         st.write(f"Mostrando la vista del estado completo: {estado_seleccionado}")
 
