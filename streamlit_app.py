@@ -53,7 +53,7 @@ vista_seleccionada = st.radio(
 
 # Create a base map centered on Mexico
 map_center = [23.634915, -102.552784]  # Coordinates of Mexico
-m = folium.Map(location=map_center, zoom_start=6)
+m = folium.Map(location=map_center, zoom_start=5)
 
 if vista_seleccionada == "Vista de todos los estados":
     # Plot all states in gray
